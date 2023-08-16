@@ -1,11 +1,35 @@
-const express =require('express')
-const colors=require('colors')
+// const express =require('express')
+// const colors=require('colors')
+import express from "express"
+import colors from "colors"
+import dotenv from "dotenv"
+import morgan from "morgan"
+import connectDB from "./config/db.js"
 
 
-const app =express()
-app.get('/',(req,res)=>{res.send( {message:'welcome'})})
+// config .env
+dotenv.config();
+// database
+connectDB();
+//rest obj
+const app =express();
 
-const port=8080
+
+//middlewares
+app.use(express.json());
+app.use(morgan('dev'));
+
+
+//api
+app.get('/',(req,res)=>{res.send( {message:'welcome'})});
+
+
+
+//port
+const port=process.env.PORT ||8081
+
+
+//listen
 app.listen(port,(req,res)=>{
-    console.log(`server is running on ${port}`.bgCyan.white)
+    console.log(`server is running on ${port}`.bgCyan.white);
 });
