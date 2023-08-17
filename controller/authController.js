@@ -98,3 +98,55 @@ export const registerController = async (req, res) => {
             });
         }
     };
+
+//login from phone and password
+
+export const loginFromPhoneController=async (req,res)=>{
+    try {
+            const { phone, password } = req.body;
+            if (!phone || !password) {
+                return res.status(400).send({
+                    success: false,
+                    message: 'Please enter phone and password.',
+                });
+            }
+            const user = await userModel.findOne({ phone });
+            if (!user) {
+                return res.status(404).send({
+                    success: false,
+                    message: 'user is not registered.',
+                });
+            }
+            const match = await comparePassword(password, user.password);
+            if (!match) {
+                return res.status(401).send({
+                    success: false,
+                    message: 'Invalid Password.',
+                });
+            }
+    
+            // Generate and send the token
+            const token = await JWT.sign({ _id: user._id }, process.env.JWT_secret, { expiresIn: '7d' });
+            res.status(200).send({
+                success: true,
+                message: 'Login successful',
+                user: {
+                    name: user.name,
+                    email: user.email,
+                    phone: user.phone
+                },
+                token // Include the token in the response
+            });
+    
+        } catch (error) {
+            console.log(error);
+            res.status(500).send({
+                success: false,
+                message: 'Error in login',
+                error
+            });
+        }
+
+
+
+}
