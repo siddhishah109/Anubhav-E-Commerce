@@ -6,6 +6,7 @@ import dotenv from "dotenv"
 import morgan from "morgan"
 import connectDB from "./config/db.js"
 import authRoutes from './routes/authRoute.js'
+import categoryRoute from './routes/categoryRoute.js'
 
 
 // config .env
@@ -21,7 +22,8 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // routes
-app.use('/api/auth',authRoutes)
+app.use('/api/auth',authRoutes);
+app.use('/api/category',categoryRoute);
 //api
 app.get('/',(req,res)=>{res.send( {message:'welcome'})});
 
