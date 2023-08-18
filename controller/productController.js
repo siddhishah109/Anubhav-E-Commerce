@@ -8,13 +8,13 @@ export const createProductController = async (req, res) => {
     try {
         const { name, price, description, quantity, offer, category } = req.fields ;
         const {productPictures} = req.files;
-        if (!name || !price || !description || !quantity || !category) {
+        if (!name || !price || !description || !quantity || !category ) {
             return res.send({ error: 'All fields are required (name, price, desription,quantity,category)' });
         }
 
-        // if (productPictures.size<1) {
-        //     return res.send({ error: 'At least one image is required and should be less tha 1 mb' });
-        // }
+        if (productPictures && productPictures.size>1000000) {
+            return res.send({ error: 'At least one image is required and should be less tha 1 mb' });
+        }
         const foundCategory = await categoryModel.findOne({ name: category });
         if (!foundCategory) {
             return res.status(400).send({ error: 'Invalid category' });

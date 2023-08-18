@@ -29,9 +29,8 @@ const ProductSchema = new Schema({
     offer: {
         type: Number,
     },
-    productPictures: [
-        { img: { type: String } }
-    ],
+    productPictures:{
+        type: Array,require: true, default: [] , },
     category: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Category', require: true
     },
