@@ -8,7 +8,9 @@ import connectDB from "./config/db.js"
 import authRoutes from './routes/authRoute.js'
 import categoryRoute from './routes/categoryRoute.js'
 import productRotue from './routes/productRoute.js'
+import orderRoute from './routes/orderRoute.js'
 import formidable from 'express-formidable';
+
 
 
 // config .env
@@ -28,6 +30,7 @@ app.use(formidable());
 app.use('/api/auth',authRoutes);
 app.use('/api/category',categoryRoute);
 app.use('/api/product',productRotue);
+app.use('/api/order',orderRoute);
 //api
 app.get('/',(req,res)=>{res.send( {message:'welcome'})});
 

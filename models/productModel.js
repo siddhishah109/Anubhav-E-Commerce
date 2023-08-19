@@ -37,6 +37,11 @@ const ProductSchema = new Schema({
     createdBy: {
         type: mongoose.Schema.Types.ObjectId, ref: 'User', require: true
     },
+    // storeId: {
+    //     type: mongoose.Schema.Types.ObjectId, ref: 'Store', require: true
+    // },
+    
+
     updatedAt: Date
 }, { timestamps: true });
 
