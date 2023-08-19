@@ -21,6 +21,9 @@ const UserSchema = new Schema({
         type: String,
         require: true
     },
+    dateOfBirth: {
+        type: Date,
+    },
     address: {type: String },
     hidden: {type:Boolean,
     default:false},
@@ -28,6 +31,11 @@ const UserSchema = new Schema({
         type:Number,
         default:0
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+
     
 },{timestamps:true});
 

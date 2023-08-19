@@ -26,7 +26,10 @@ const ProductSchema = new Schema({
         require: true,
         trim: true
     },
-    offer: {
+    offer:{
+        type:mongoose.Schema.Types.ObjectId, ref: 'Offer', 
+    },
+    productPriceAfterDiscount:{
         type: Number,
     },
     productPictures:{
