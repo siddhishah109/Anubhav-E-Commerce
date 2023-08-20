@@ -4,19 +4,35 @@ import { requireSignIn, adminMiddleware } from "../middlewares/authMiddleware.js
 
 const router =express.Router()
 
-// create category
-router.post('/create',requireSignIn,adminMiddleware,createCategoryController)
+// public routes ------------------------------------------
 
 // get all category
 router.get('/getall',getAllCategoriesController)
 
 // get single category
-router.get('/getone/:slug',getSingleCategoryController)
+router.get('/:slug',getSingleCategoryController)
 
-// update category
-router.put('/update/:id',requireSignIn,adminMiddleware,updateCategoryController)
 
-// delete category
-router.delete('/delete/:id',requireSignIn,adminMiddleware,deleteCategoryController)
+
+
+// admin routes ------------------------------------------
+
+
+
+
+// get all category for admin
+router.get('/admin/getall',requireSignIn,adminMiddleware,getAllCategoriesController)
+
+// get single category for admin
+router.get('/admin/getone/:slug',requireSignIn,adminMiddleware,getSingleCategoryController)
+
+// create category for admin
+router.post('/admin/create',requireSignIn,adminMiddleware,createCategoryController)
+
+// update category for admin
+router.put('/admin/update/:id',requireSignIn,adminMiddleware,updateCategoryController)
+
+// delete category for admin
+router.delete('/admin/delete/:id',requireSignIn,adminMiddleware,deleteCategoryController)
 
 export default router;

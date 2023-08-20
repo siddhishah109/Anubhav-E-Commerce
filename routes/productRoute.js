@@ -5,8 +5,7 @@ import formidable from 'express-formidable';
 
 const router = express.Router();
 
-// create product
-router.post('/create', requireSignIn, adminMiddleware,formidable(), createProductController)
+// public routes ------------------------------------------
 
 // get all product
 router.get('/getall', getAllProductsController)
@@ -14,11 +13,20 @@ router.get('/getall', getAllProductsController)
 // get single product
 router.get('/getone/:slug', getSingleProductController)
 
-// update product
-router.put('/update/:id', requireSignIn, adminMiddleware, updateProductController)
 
-// delete product
-router.delete('/delete/:id', requireSignIn, adminMiddleware, deleteProductController)
+// admin routes ------------------------------------------
+
+// admin create product
+router.post('/admin/create', requireSignIn, adminMiddleware,formidable(), createProductController)
+
+// admin get all product
+router.get('/admin/getall', requireSignIn, adminMiddleware, getAllProductsController)
+
+// update product for admin
+router.put('/admin/update/:id', requireSignIn, adminMiddleware,formidable(), updateProductController)
+
+// delete product for admin
+router.delete('/admin/delete/:id', requireSignIn, adminMiddleware, deleteProductController)
 
 export default router;
 

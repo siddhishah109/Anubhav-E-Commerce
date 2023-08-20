@@ -30,7 +30,7 @@ app.use(formidable());
 app.use('/api/auth',authRoutes);
 app.use('/api/category',categoryRoute);
 app.use('/api/product',productRotue);
-app.use('/api/order',orderRoute);
+// app.use('/api/order',orderRoute);
 //api
 app.get('/',(req,res)=>{res.send( {message:'welcome'})});
 
