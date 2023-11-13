@@ -8,11 +8,8 @@ import connectDB from "./config/db.js"
 import authRoutes from './routes/authRoute.js'
 import categoryRoute from './routes/categoryRoute.js'
 import productRotue from './routes/productRoute.js'
-import orderRoute from './routes/orderRoute.js'
+// import orderRoute from './routes/orderRoute.js'
 import formidable from 'express-formidable';
-
-
-
 // config .env
 dotenv.config();
 // database
