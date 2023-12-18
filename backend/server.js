@@ -17,7 +17,7 @@ connectDB();
 //rest obj
 const app =express();
 
-
+app.use(cors());
 //middlewares
 app.use(express.json());
 app.use(morgan('dev'));
