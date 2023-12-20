@@ -36,7 +36,7 @@ export const getOrders = async (req, res) => {
 
   export const updateOrderById = async (req, res) => {
     try {
-      const updatedOrder = await Order.findByIdAndUpdate(
+      const updatedOrder = await orderModel.findByIdAndUpdate(
         req.params.orderId,
         req.body,
         { new: true }
