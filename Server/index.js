@@ -4,6 +4,7 @@ import connectDB from "./db.js"
 import colors from "colors"
 import userRoute from './routes/userRoute.js'
 import productRoute from './routes/productRoute.js'
+import categoryRoute from './routes/categoryRoute.js'
 import bodyParser from "body-parser"
 dotenv.config();
 
@@ -16,7 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/',(req,res)=>{res.send( {message:'welcome'})});
 
 app.use('/auth',userRoute);
-app.use ('/product',productRoute)
+app.use ('/product',productRoute);
+app.use('/category',categoryRoute);
 const port=process.env.PORT ||8022
 
 app.listen(port,(req,res)=>{
