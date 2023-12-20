@@ -6,6 +6,7 @@ import userRoute from './routes/userRoute.js'
 import productRoute from './routes/productRoute.js'
 import categoryRoute from './routes/categoryRoute.js'
 import orderRoute from './routes/orderRoute.js'
+import reviewRoute from './routes/reviewRoute.js'
 import bodyParser from "body-parser"
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use('/auth',userRoute);
 app.use ('/product',productRoute);
 app.use('/category',categoryRoute);
 app.use('/order',orderRoute);
+app.use('/review',reviewRoute);
 const port=process.env.PORT ||8022
 
 app.listen(port,(req,res)=>{
