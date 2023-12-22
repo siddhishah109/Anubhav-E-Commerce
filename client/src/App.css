@@ -1,0 +1,50 @@
+.navBox{
+    height: 10vh;
+}
+*{
+    overflow-x: hidden;
+}
+.title-nav{
+    font-family: 'Playfair Display', serif;
+    font-size: 50px !important;
+    padding-left: 13vw;
+}
+
+.nav-link-bar{
+    font-size: larger;
+    display: flex;
+    justify-content: flex-end;
+    width: 65vw;
+}
+
+.signin-button{
+    margin: 20px;
+    background: black;
+    background-color: black !important;
+    border-radius: 30px!important;
+    border: 1px solid white!important;
+}
+
+.nav-link{
+    margin: 0 10px;
+}
+
+/* ----------------------------------navbar-------------------- */
+
+.banner1{
+    background-image: url('../src//img/banner2.png');
+    height: 85vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+}
+
+
+/*--------------------------------------home end ----------------*/
+
+
+.footer{
+    background-color: #2c4152 !important;
+    color: white !important;
+
+}
