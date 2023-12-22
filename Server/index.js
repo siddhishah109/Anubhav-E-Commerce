@@ -1,7 +1,8 @@
 import express from "express"
 import dotenv from "dotenv"
 import connectDB from "./db.js"
-import colors from "colors"
+import colors from "colors";
+import cors from 'cors';
 import userRoute from './routes/userRoute.js'
 import productRoute from './routes/productRoute.js'
 import categoryRoute from './routes/categoryRoute.js'
@@ -16,6 +17,7 @@ connectDB();
 const app =express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.get('/',(req,res)=>{res.send( {message:'welcome'})});
 
