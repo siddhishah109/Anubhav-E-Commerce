@@ -25,47 +25,47 @@ const UserSchema = new Schema({
     role: { type: Number, default: 1 },
     hidden: { type: Boolean, default: false },
 
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: 'review',
+    }],
 
-    orderHistory:{
-        type:Array,
-        default:[]
-    },
-    shoppingCart:{
-        type:Array,
-        default:[]
-    },
-    wishlist:{
-        type:Array,
-        default:[]
-    },
-    recommendedProducts:{
-        type:Array,
-        default:[]
-    },
-    recentlyViewed:{
-        type:Array,
-        default:[]
-    },
-    paymentMethods:{
-        type:Array,
-        default:[]
-    },
-    billingInformation:{
-        type:Object
-    },
-    defaultShippingAddress:{
-        type:Object
-    },
-    shippingMethodPreferences:{
-        type:Object
-    },
-    productReviews:{
-        type:Array,
-        default:[]
-    },
-    customerServiceFeedback:{
-         type:String
-    },
+    // orderHistory:{
+    //     type:Array,
+    //     default:[]
+    // },
+    // shoppingCart:{
+    //     type:Array,
+    //     default:[]
+    // },
+    // wishlist:{
+    //     type:Array,
+    //     default:[]
+    // },
+    // recommendedProducts:{
+    //     type:Array,
+    //     default:[]
+    // },
+    // recentlyViewed:{
+    //     type:Array,
+    //     default:[]
+    // },
+    // paymentMethods:{
+    //     type:Array,
+    //     default:[]
+    // },
+    // billingInformation:{
+    //     type:Object
+    // },
+    // defaultShippingAddress:{
+    //     type:Object
+    // },
+    // shippingMethodPreferences:{
+    //     type:Object
+    // },
+    // customerServiceFeedback:{
+    //      type:String
+    // },
 
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
@@ -84,8 +84,6 @@ const UserSchema = new Schema({
   
     // defaultShippingAddress: { type: Schema.Types.ObjectId, ref: 'Address' },
     // shippingMethodPreferences: { type: Object },
-  
-    // productReviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
     // customerServiceFeedback: { type: String },
 
 },{timestamps:true});

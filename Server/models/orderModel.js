@@ -3,11 +3,11 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
-    customer: {
-        name: { type: String, required: true },
-        email: { type: String, required: true },
-        address: { type: String, required: true },
-      },
+  customer: {
+    type: Schema.Types.ObjectId,
+    ref: 'user', 
+    required: true,
+  },
 
       products: [
         {
