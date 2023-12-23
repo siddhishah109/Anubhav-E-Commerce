@@ -10,6 +10,7 @@ import orderRoute from './routes/orderRoute.js'
 import reviewRoute from './routes/reviewRoute.js'
 import cartRoute from './routes/cartRoute.js'
 import bodyParser from "body-parser"
+import fileUpload from 'express-fileupload'
 dotenv.config();
 
 connectDB();
@@ -18,6 +19,10 @@ const app =express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(fileUpload({
+    useTempFiles:true
+
+}));
 
 app.get('/',(req,res)=>{res.send( {message:'welcome'})});
 
