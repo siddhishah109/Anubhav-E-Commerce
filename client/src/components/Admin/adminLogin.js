@@ -1,55 +1,80 @@
-import React from 'react'
-import {
-    MDBBtn,
-    MDBContainer,
-    MDBInput,
-    MDBCheckbox,
-    MDBIcon
-  }
-  from 'mdb-react-ui-kit';
-
+import React , { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { loginAdmin } from '../../redux/thunkm';
+import { useNavigate } from 'react-router-dom';
 
 const AdminLogin = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+
+    console.log('Email:', email);
+    console.log('Password:', password);
+    // Add your authentication logic here
+    try {
+      const response = await dispatch(loginAdmin({ email, password }));
+     console.log("response",response)
+      if (response.payload && response.payload.success) {
+        localStorage.setItem('adminToken', response.payload.token);
+        navigate('/admin-home') 
+      } else {
+        
+        console.error('Admin login failed:', response.payload.message);
+      }
+    } catch (error) {
+      console.error('Login failed:', error.message);
+    }
+  };
   return (
-    <div className='admin-login'>
-    <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
-
-      <MDBInput wrapperClass='mb-4' label='Email address' id='form1' type='email'/>
-      <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password'/>
-
-      <div className="d-flex justify-content-between mx-3 mb-4">
-        <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
-        <a href="!#">Forgot password?</a>
-      </div>
-
-      <MDBBtn className="mb-4">Sign in</MDBBtn>
-
-      {/* <div className="text-center">
-        <p>Not a member? <a href="#!">Register</a></p>
-        <p>or sign up with:</p>
-
-        <div className='d-flex justify-content-between mx-auto' style={{width: '40%'}}>
-          <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-            <MDBIcon fab icon='facebook-f' size="sm"/>
-          </MDBBtn>
-
-          <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-            <MDBIcon fab icon='twitter' size="sm"/>
-          </MDBBtn>
-
-          <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-            <MDBIcon fab icon='google' size="sm"/>
-          </MDBBtn>
-
-          <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-            <MDBIcon fab icon='github' size="sm"/>
-          </MDBBtn>
-
+    <div className="container mt-5">
+    <div className="row justify-content-center">
+      <div className="col-md-6">
+        <div className="card">
+          <div className="card-body">
+            <h2 className="card-title text-center">Login</h2>
+            <form>
+              <div className="mb-3">
+                <label htmlFor="email" className="form-label">
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="password" className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleLogin}
+              >
+                Login
+              </button>
+            </form>
+          </div>
         </div>
-      </div> */}
-
-    </MDBContainer>
+      </div>
     </div>
+  </div>
   )
 }
 

@@ -6,6 +6,7 @@ import AdminLogin from './components/Admin/adminLogin';
 import AdminHomePage from './components/Admin/adminHomePage';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import AdminProduct from './components/Admin/adminProduct';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/about'element={<About/>}/>
         <Route path='/admin' element={<AdminLogin/>}/>
         <Route path='/admin-home' element={<AdminHomePage/>}/>
+        <Route path='/admin-product' element={<AdminProduct/>}/>
 
       </Routes>
     </BrowserRouter>
