@@ -15,7 +15,9 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use("/api",router)
-
+app.get("/",(req,res)=>{
+    res.send("Hello")
+})
 const PORT = 8080 || process.env.PORT
 
 
