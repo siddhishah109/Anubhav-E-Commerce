@@ -3,11 +3,15 @@ import CategoryList from '../components/CategoryList'
 import BannerProduct from '../components/BannerProduct'
 import HorizontalCardProduct from '../components/HorizontalCardProduct'
 import VerticalCardProduct from '../components/VerticalCardProduct'
-
+import b1 from '../assest/banner/b1.jpg'
 const Home = () => {
   return (
     <div>
+       <div className='w-full h-full min-w-full min-h-full transition-all'>
+        <image src={b1} className='b1'/>
+      </div>
       <CategoryList/>
+     
       <BannerProduct/>
 
       <HorizontalCardProduct category={"airpodes"} heading={"Top's Airpodes"}/>
@@ -20,7 +24,7 @@ const Home = () => {
       <VerticalCardProduct category={"earphones"} heading={"Wired Earphones"}/>
       <VerticalCardProduct category={"speakers"} heading={"Bluetooth Speakers"}/>
       <VerticalCardProduct category={"refrigerator"} heading={"Refrigerator"}/>
-      <VerticalCardProduct category={"trimmers"} heading={"Trimmers"}/>
+      <VerticalCardProduct category={"WomenClothing"} heading={"Women Clothing"}/>
     </div>
   )
 }
