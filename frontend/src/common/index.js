@@ -1,4 +1,4 @@
-const backendDomin = "https://anubhav-website.onrender.com/"
+const backendDomin = "https://anubhav-website.onrender.com"
 
 const SummaryApi = {
     signUP : {
