@@ -53,15 +53,19 @@ const Header = () => {
     }
   }
   return (
-    <header className='h-16 shadow-md bg-white fixed w-full z-40'>
+    <header className='h-16 shadow-md bg-black fixed w-full z-40'>
       <div className=' h-full container mx-auto flex items-center px-4 justify-between'>
-            {/* <div className=''> */}
-                <image src={Logo} width={100} height={30}/>
-            {/* </div> */}
+      <div className="flex items-center">
+        <a href="/" className="flex items-center">
+          <img src={Logo} width={65} height={29} alt="Logo" />
+          <h1 className="text-white text-2xl ml-3 font-bold">Anubhav</h1>
+        </a>
+      </div>
+
 
             <div className='hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow pl-2'>
-                <input type='text' placeholder='search product here...' className='w-full outline-none' onChange={handleSearch} value={search}/>
-                <div className='text-lg min-w-[50px] h-8 bg-red-600 flex items-center justify-center rounded-r-full text-white'>
+                <input type='text' placeholder='search product here...' className='w-full rounded-l-full rounded-r-none outline-none text-white placeholder-white bg-black px-4 py-2' onChange={handleSearch} value={search}/>
+                <div className='text-lg min-w-[50px] h-10 bg-red-600 flex items-center justify-center rounded-r-full text-white'>
                   <GrSearch />
                 </div>
             </div>
@@ -76,7 +80,7 @@ const Header = () => {
                       <div className='text-3xl cursor-pointer relative flex justify-center' onClick={()=>setMenuDisplay(preve => !preve)}>
                         {
                           user?.profilePic ? (
-                            <img src={user?.profilePic} className='w-10 h-10 rounded-full' alt={user?.name} />
+                            <img src={user?.profilePic} className='w-10 h-10 rounded-full' alt={user?.name} style={{ borderColor: 'white' }} />
                           ) : (
                             <FaRegCircleUser/>
                           )
@@ -123,7 +127,7 @@ const Header = () => {
                       <button onClick={handleLogout} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Logout</button>
                     )
                     : (
-                    <Link to={"/login"} className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</Link>
+                    <Link to={"/login"} className='px-5 py-2 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</Link>
                     )
                   }
                     
