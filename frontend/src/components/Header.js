@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Logo from '../assest/anubhav1.png'
 import { GrSearch } from "react-icons/gr";
 import { FaRegCircleUser } from "react-icons/fa6";
@@ -21,6 +21,9 @@ const Header = () => {
   const URLSearch = new URLSearchParams(searchInput?.search)
   const searchQuery = URLSearch.getAll("q")
   const [search,setSearch] = useState(searchQuery)
+  useEffect(()=>{
+    console.log(user)
+  },[user])
 
   const handleLogout = async() => {
     const fetchData = await fetch(SummaryApi.logout_user.url,{
