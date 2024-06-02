@@ -1,4 +1,4 @@
-const backendDomin = process.env.BACKEND_DOMAIN
+const backendDomin = "https://anubhav-website.onrender.com/"
 
 const SummaryApi = {
     signUP : {
