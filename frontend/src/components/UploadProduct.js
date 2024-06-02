@@ -37,15 +37,19 @@ const UploadProduct = ({
   }
 
   const handleUploadProduct = async(e) => {
-    const file = e.target.files[0]
-    const uploadImageCloudinary = await uploadImage(file)
+    const files = e.target.files;
+    const uploadedImages = [];
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const uploadImageCloudinary = await uploadImage(file); // Assuming uploadImage is adjusted to handle single files
+      uploadedImages.push(uploadImageCloudinary.url);
+    }
+    // const uploadImageCloudinary = await uploadImage(file)
 
-    setData((preve)=>{
-      return{
-        ...preve,
-        productImage : [ ...preve.productImage, uploadImageCloudinary.url]
-      }
-    })
+    setData((prevData) => ({
+      ...prevData,
+       productImage: [...prevData.productImage,...uploadedImages],
+     }));
   }
 
   const handleDeleteProductImage = async(index)=>{
@@ -148,7 +152,7 @@ const UploadProduct = ({
                         <div className='text-slate-500 flex justify-center items-center flex-col gap-2'>
                           <span className='text-4xl'><FaCloudUploadAlt/></span>
                           <p className='text-sm'>Upload Product Image</p>
-                          <input type='file' id='uploadImageInput'  className='hidden' onChange={handleUploadProduct}/>
+                          <input type='file' id='uploadImageInput' multiple  className='hidden' onChange={handleUploadProduct}/>
                         </div>
               </div>
               </label> 
