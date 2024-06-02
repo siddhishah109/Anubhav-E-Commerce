@@ -1,3 +1,12 @@
+#root{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+
+
 .customShadow{
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
@@ -22,4 +31,10 @@
 .b1{
     width: 100vw;
     height: 60vh;
+}
+
+
+/* login */
+#login{
+    height: 75vh;
 }

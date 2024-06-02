@@ -6,7 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
 import Context from '../context';
-
+import Lottie from 'react-lottie';
+import profiles from '../lotties/profile.json'
 const Login = () => {
     const [showPassword,setShowPassword] = useState(false)
     const [data,setData] = useState({
@@ -26,7 +27,11 @@ const Login = () => {
             }
         })
     }
-
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: profiles,
+      };
 
     const handleSubmit = async(e) =>{
         e.preventDefault()
@@ -59,11 +64,11 @@ const Login = () => {
     
   return (
     <section id='login'>
-        <div className='mx-auto container p-4'>
+        <div className='mx-auto container p-4 my-8 mt-16'>
 
-            <div className='bg-white p-5 w-full max-w-sm mx-auto'>
-                    <div className='w-20 h-20 mx-auto'>
-                        <img src={loginIcons} alt='login icons'/>
+            <div className='bg-white p-5 w-full max-w-sm mx-auto rounded-3xl'>
+                    <div className='w-40 h-40 mx-auto'>
+                    <Lottie  options={defaultOptions}/>
                     </div>
 
                     <form className='pt-6 flex flex-col gap-2' onSubmit={handleSubmit}>
